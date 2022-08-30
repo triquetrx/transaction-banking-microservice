@@ -31,7 +31,7 @@ public class TransactionController {
 	@Autowired
 	TransactionService service;
 	
-	@CrossOrigin(origins ="http://localhost:3000")
+	@CrossOrigin(origins ="http://localhost:5000")
 	@PostMapping("/deposit")
 	public ResponseEntity<?> deposit(@RequestHeader(name="Authorization")String token,@RequestBody OneWayTransactionDTO transactionDTO){
 		try {
@@ -46,7 +46,7 @@ public class TransactionController {
 		}
 	}
 	
-	@CrossOrigin(origins ="http://localhost:3000")
+	@CrossOrigin(origins ="http://localhost:5000")
 	@PostMapping("/withdraw")
 	public ResponseEntity<?> withdraw(@RequestHeader(name="Authorization")String token,@RequestBody OneWayTransactionDTO transactionDTO){
 		try {
@@ -64,7 +64,7 @@ public class TransactionController {
 	}
 	
 	@PostMapping("/transfer")
-	@CrossOrigin(origins ="http://localhost:3000")
+	@CrossOrigin(origins ="http://localhost:5000")
 	public ResponseEntity<?> transfer(@RequestHeader(name="Authorization")String token,@RequestBody TransferDTO transferDTO){
 		try {
 			TransferSuccessMessage transfer = service.transfer(token, transferDTO);
@@ -81,7 +81,7 @@ public class TransactionController {
 	}
 	
 	@GetMapping("/get-trasactions/{accountId}")
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "http://localhost:5000")
 	public ResponseEntity<?> getTransactions(@RequestHeader(name="Authorization")String token,@PathVariable String accountId){
 		try {
 			List<TransactionHistory> transactionHistory = service.transactionHistory(token, accountId);
